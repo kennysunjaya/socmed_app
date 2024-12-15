@@ -1,8 +1,4 @@
-if (process.env.NODE_ENV !== "production") {
-  (async () => {
-    await import("dotenv/config");
-  })();
-}
+import "dotenv/config";
 
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
