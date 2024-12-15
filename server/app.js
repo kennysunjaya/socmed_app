@@ -1,3 +1,9 @@
+if (process.env.NODE_ENV !== "production") {
+  (async () => {
+    await import("dotenv/config");
+  })();
+}
+
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import { userResolvers, userTypeDefs } from "./schemas/UserSchema.js";
@@ -11,7 +17,7 @@ const server = new ApolloServer({
 });
 
 const { url } = await startStandaloneServer(server, {
-  listen: { port: 3000 },
+  listen: { port: process.env.PORT || 3000 },
   context: async ({ req, res }) => {
     return {
       doAuthentication: async () => await authentication(req),
