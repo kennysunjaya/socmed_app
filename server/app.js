@@ -14,6 +14,7 @@ import { postResolvers, postTypeDefs } from "./schemas/PostSchema.js";
 const server = new ApolloServer({
   typeDefs: [userTypeDefs, followTypeDefs, postTypeDefs],
   resolvers: [userResolvers, followResolvers, postResolvers],
+  introspection: true,
 });
 
 const { url } = await startStandaloneServer(server, {
